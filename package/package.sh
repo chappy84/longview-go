@@ -50,7 +50,7 @@ do
 
 	# Build the binary
 
-	if ! GOARCH="${ARCH}" go build -o "${TEMPDIR_DEB}/usr/sbin/${EXENAME}" *.go
+	if ! GOARCH="${ARCH}" CGO_ENABLED=0 go build -o "${TEMPDIR_DEB}/usr/sbin/${EXENAME}" *.go
 	then
 		echo "*** Build error"
 		exit 1
@@ -140,8 +140,6 @@ License: GPL
 URL: https://github.com/kmansoft/longview-go
 Group: System
 Packager: Kostya Vasilyev <kmansoft@gmail.com>
-Requires: libpthread
-Requires: libc
 
 %description
 Longview is an alternative client for Linode Longview, written in GO, no install dependencies.
